@@ -2,24 +2,23 @@
     <div class="row">
         <div class="form_bg">
             <form #regForm='ngForm' (ngSubmit)="CreateProduct(regForm)" >
-                 <h2 class="text-center">Student Registration page</h2>
+                 <h2 class="text-center">Create a new product</h2>
                 <br/>
                 <div class="form-group">
                   <label for="name">Name: </label> <br />
-                    <input type="text" class="form-control" placeholder="Full Name" name="name" ngModel >
+                    <input type="text" class="form-control" placeholder="Product name" name="name" ngModel >
                 </div>
                 <div class="form-group">
-                  <label for="name">Age: </label><br />
-                    <input type="number" class="form-control"  placeholder="eg:- 17" name="age" ngModel >
+                  <label for="size">Size: </label><br />
+                    <input type="number" class="form-control"  placeholder="Size in inches" name="size" ngModel >
                 </div>
                 <div class="form-group">
-                  <label for="name">Address: </label><br />
-                    <input type="text" class="form-control" id="address" placeholder="Exxxx,xxx,xx" name="address" ngModel>
+                  <label for="brand">Brand: </label><br />
+                    <input type="text" class="form-control" id="brand" placeholder="Enter brand name" name="brand" ngModel>
                 </div>
-  
                 <br/>
                 <div class="align-center">
-                    <button type="submit" class="btn btn-default" id="register"  >Register</button>
+                    <button type="submit" class="btn btn-default" id="Create">Create Product</button>
                 </div>
             </form>
         </div>

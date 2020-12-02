@@ -3,5 +3,4 @@ export class Tv {
     name: string;
     size: number;
     brand: string;
-    smart: boolean;
 }
