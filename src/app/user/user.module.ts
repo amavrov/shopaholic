@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UserService } from './user-service/user-service';
 import { UserRoutingModule } from './user-routing.module';
 
 
@@ -19,6 +18,6 @@ import { UserRoutingModule } from './user-routing.module';
     CommonModule,
     UserRoutingModule
   ],
-  providers: [UserService]
+  providers: []
 })
 export class UserModule { }

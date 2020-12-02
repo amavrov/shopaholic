@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig = {
+  firebaseConfig : {
     apiKey: "AIzaSyA_ebtW3k2Sn8mao_6drdnSFpZFXojrjwc",
     authDomain: "shopaholic-98985.firebaseapp.com",
     databaseURL: "https://shopaholic-98985.firebaseio.com",

@@ -1,29 +1,24 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from './core/not-found/not-found.component';
-import { ShopComponent } from './shop/shop.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-
-  {
-    path: 'shop',
-    component: ShopComponent,
-    data: {
-      title: 'shop'
+    {
+      path: 'shop',
+      loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+    },
+    {
+      path: '',
+      redirectTo: '',
+      pathMatch: 'full'
     }
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/home'
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-    data: {
-      title: '404'
-    }
-  }
-
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes);
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule {
+
+
+  } 
