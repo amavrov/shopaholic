@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig = {
+    apiKey: "AIzaSyA_ebtW3k2Sn8mao_6drdnSFpZFXojrjwc",
+    authDomain: "shopaholic-98985.firebaseapp.com",
+    databaseURL: "https://shopaholic-98985.firebaseio.com",
+    projectId: "shopaholic-98985",
+    storageBucket: "shopaholic-98985.appspot.com",
+    messagingSenderId: "552587758510",
+    appId: "1:552587758510:web:56c970791bea5872cf163f",
+    measurementId: "G-NZ45T062HD"
+  }
 };
 
 /*
