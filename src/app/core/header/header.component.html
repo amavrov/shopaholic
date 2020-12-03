@@ -1,8 +1,9 @@
   <header>
-    <nav>
+    <nav class="mini-navbar-wrap">
       <ul>
-        <li>
-          <a routerLink="/">Home</a>
+        <ul>        
+          <li>
+          <a routerLink="/home">Home</a>
         </li>
         <li>
           <a routerLink="/user/login">Login</a>
@@ -10,12 +11,15 @@
         <li>
           <a routerLink="/user/register">Register</a>
         </li>
+      </ul>
+      <ul>
         <li>
-            <a routerLink="/shop">Browse the shop</a>
+            <a routerLink="/shop/browse">Shop</a>
         </li>
         <li>
             <a routerLink="/shop/create-product">Create Product</a>
         </li>
       </ul>
+    </ul>
     </nav>
   </header>

@@ -1,0 +1,20 @@
+footer {
+    background: rgb(0, 175, 255);
+    margin-top: 1em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: .5em;
+    padding: .5em;
+    font-size: 1em;
+    text-align: center;
+    color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  footer span {
+    font-size: 1.5em;
+  }

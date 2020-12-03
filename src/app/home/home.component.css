@@ -1,0 +1,11 @@
+.welcome-text{
+    margin: 0em 3em 0em 3em;
+    text-align: center;
+}
+
+h1{
+    color: rgb(0, 175, 255);
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

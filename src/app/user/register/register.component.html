@@ -1,1 +1,32 @@
-<p>register works!</p>
+<div class="form-container">
+    <div>
+        <div class="form_bg">
+            <form #regForm='ngForm' (ngSubmit)="RegisterUser(regForm)" >
+                 <h2>Register a new Shopaholic account</h2>
+                <br/>
+                <div class="form-group group-elem">
+                  <label for="email">Email: </label> <br />
+                    <input type="email" class="form-control" placeholder="e.g. JohnDoe@gmail.com" name="email" ngModel >
+                </div>
+                <div class="form-group group-elem">
+                  <label for="firstName">First name: </label><br />
+                    <input type="text" class="form-control"  placeholder="e.g. John" name="firstName" ngModel >
+                </div>
+                <br/>
+                <div class="form-group group-elem">
+                    <label for="lastName">Last name: </label><br />
+                      <input type="text" class="form-control"  placeholder="e.g. Doe" name="lastName" ngModel >
+                  </div>
+                <br/>
+                <div class="form-group group-elem">
+                    <label for="password">Password: </label><br />
+                      <input type="password" class="form-control"  placeholder="********" name="password" ngModel >
+                  </div>
+                <br/>
+                <div class="btuttons">
+                    <button type="submit" class="btn" id="Register">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>

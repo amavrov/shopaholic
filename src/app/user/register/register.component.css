@@ -1,0 +1,50 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+}
+
+.form_bg{
+    border: 1px solid;
+    padding: 1em 2em 1em 2em;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(0, 128, 182, 1) 0%, rgba(0, 128, 182, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    
+}
+
+h1{
+    display: inline-flex;
+}
+
+.group-elem{
+    margin-top: 1em;
+}
+
+label{
+    justify-self: center;
+    font-size: large;
+}
+
+input{
+    margin-top: .5em;
+    height: 2.5em;
+    font-size: medium;
+    width: 100%;
+}
+
+.btn{
+    background-color:rgb(15, 180, 0);
+    color: white;
+    padding: .4em 1em .4em 1em;
+    font-size: large;
+    border-radius: 10px;
+    border: white solid 2px;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+}
+
+.buttons{
+    text-align: center;
+}
