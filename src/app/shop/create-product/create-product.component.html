@@ -1,4 +1,5 @@
-<div class="form-container">
+<div class="form-container" *ngIf="auth.user$ | async as user; else login">
+  <button class="button" (click)="auth.signOut()">Sign Out</button>
     <div>
         <div class="form_bg">
             <form #regForm='ngForm' (ngSubmit)="CreateProduct(regForm)" >
@@ -24,3 +25,7 @@
         </div>
     </div>
   </div>
+
+  <ng-template #login>
+    <button class="button" (click)="auth.googleSignIn()">Log in with Google</button>
+  </ng-template>

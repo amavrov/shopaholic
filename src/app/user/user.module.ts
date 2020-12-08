@@ -5,6 +5,11 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
+import { FirebaseModule } from '../core/firebase/firebase.module';
+
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -18,7 +23,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
+    FirebaseModule,
+    NgxAuthFirebaseUIModule,
+    BrowserAnimationsModule,
+    BrowserModule
   ],
   providers: []
 })

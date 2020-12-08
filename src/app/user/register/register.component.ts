@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from '../../../entities/user.model';
-import { UserService } from '../../../services/user.service';
+import { AuthService } from '../../../services/auth.service';
 
 
 
@@ -15,10 +15,10 @@ import { UserService } from '../../../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  newUserForm : User;
+  newUserForm : {email : string, password: string, name: string};
 
   constructor(
-    private us: UserService,
+    private auth: AuthService,
     private _router: Router,
     private _activatedRoute : ActivatedRoute
     ) { }
@@ -32,9 +32,9 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
-    var hasLogged = this.us.createUser(this.newUserForm);
+    var hasLogged = this.auth.createUser(this.newUserForm.email, this.newUserForm.password);
     if(hasLogged){
-      this._router.navigate(["../../home"],{relativeTo:this._activatedRoute})
+      this._router.navigate(["/"])
     }
   }
 }

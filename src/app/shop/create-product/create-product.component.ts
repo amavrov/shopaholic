@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Tv } from '../../../entities/tv.model';
 import { ProductService } from '../../../services/product.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-create-product',
@@ -14,7 +15,7 @@ export class CreateProductComponent implements OnInit {
 
   newProductForm : Tv;
 
-  constructor(private ps: ProductService) { }
+  constructor(private ps: ProductService, public auth: AuthService) { }
 
   ngOnInit(): void {
   }
