@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { User } from '../../../entities/user.model';
 import { AuthService } from '../../../services/auth.service';
@@ -18,9 +18,8 @@ export class RegisterComponent implements OnInit {
   newUserForm : {email : string, password: string, name: string};
 
   constructor(
-    private auth: AuthService,
-    private _router: Router,
-    private _activatedRoute : ActivatedRoute
+    public auth: AuthService,
+    public _router: Router,
     ) { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-<div class="form-container">
+<div class="form-container" *ngIf="!(auth.user$ | async) as user; else redirect">
     <div>
         <div class="form_bg">
             <form #regForm='ngForm' (ngSubmit)="RegisterUser(regForm)" >
@@ -25,3 +25,7 @@
         </div>
     </div>
   </div>
+
+  <ng-template #redirect>
+    <p>You are already registered and signed in! From <a routerLink="/">here</a> you can get back home!</p>
+  </ng-template>

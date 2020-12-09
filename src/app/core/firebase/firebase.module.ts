@@ -5,7 +5,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { environment } from '../../../environments/environment';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -16,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
     AngularFireDatabaseModule,
     BrowserAnimationsModule
   ],

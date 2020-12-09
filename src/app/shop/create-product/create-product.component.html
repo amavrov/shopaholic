@@ -1,5 +1,4 @@
 <div class="form-container" *ngIf="auth.user$ | async as user; else login">
-  <button class="button" (click)="auth.signOut()">Sign Out</button>
     <div>
         <div class="form_bg">
             <form #regForm='ngForm' (ngSubmit)="CreateProduct(regForm)" >
@@ -15,11 +14,12 @@
                 </div>
                 <div class="form-group group-elem">
                   <label for="brand">Brand: </label><br />
-                    <input type="text" class="form-control" id="brand" placeholder="Enter brand name" name="brand" ngModel>
+                    <input type="text" class="form-control" id="brand" placeholder="Enter brand name" name="brand" ngModel >
                 </div>
                 <br/>
                 <div>
                     <button type="submit" class="btn btn-default" id="Create">Create Product</button>
+                    <button class="button" (click)="auth.signOut()">Sign Out</button>
                 </div>
             </form>
         </div>
@@ -29,3 +29,4 @@
   <ng-template #login>
     <button class="button" (click)="auth.googleSignIn()">Log in with Google</button>
   </ng-template>
+
