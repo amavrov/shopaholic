@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="form-container" *ngIf="!(auth.user$ | async) as user; else redirect">
+  <div>
+    <div class="form_bg">
+      <form #loginForm='ngForm' (ngSubmit)="logInUser(loginForm)">
+        <h2>Log in to your Shopaholic account</h2>
+        <br />
+        <div class="form-group group-elem">
+          <label for="email">Email: </label> <br />
+          <input #email="ngModel" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email"
+            placeholder="John.Doe@gmail.com" ngModel required>
+          <div *ngIf="email.touched" class="error">
+            <p *ngIf="email.errors?.required">Email is a required field!</p>
+            <p *ngIf="email.errors?.pattern">This is not a valid Email!!!</p>
+          </div>
+        </div>
+
+        <div class="form-group group-elem">
+          <label for="password">Password: </label>
+          <br />
+          <input #password="ngModel" type="password" class="form-control" placeholder="********" name="password" id="password" ngModel required minlength="4">
+          <div *ngIf="password.touched" class="error">
+            <p *ngIf="password.errors?.required">Password is a required field!</p>
+            <p *ngIf="password.errors?.minlength">Minimum length is 4 characters</p>
+          </div>
+        </div>
+        <div class="error" *ngIf="this.errorMessage != ''">
+          <p>{{this.errorMessage}}</p>
+        </div>
+        <br />
+        <div class="buttons">
+          <button type="submit" class="btn" id="Register">Log In</button>
+          <button class="button" class="btn" (click)="auth.googleSignIn()">Log in with Google</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #redirect>
+  <p>You are already signed in! From <a routerLink="/home">here</a> you can get back home!</p>
+</ng-template>

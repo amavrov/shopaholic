@@ -47,4 +47,10 @@ input{
 
 .buttons{
     text-align: center;
+    display: flex;
+}
+
+.error{
+    color: red;
+    background-color: whitesmoke;
 }

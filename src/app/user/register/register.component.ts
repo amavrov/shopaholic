@@ -11,16 +11,18 @@ import { AuthService } from '../../../services/auth.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  exportAs: 'ngForm' 
+  exportAs: 'ngForm'
 })
 export class RegisterComponent implements OnInit {
 
-  newUserForm : {email : string, password: string, name: string};
+  newUserForm: { email: string, password: string, displayName: string };
+  errorMessage: string = '';
+  hasError: boolean = false;
 
   constructor(
     public auth: AuthService,
     public _router: Router,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
   }
@@ -31,9 +33,19 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
-    var hasLogged = this.auth.createUser(this.newUserForm.email, this.newUserForm.password);
-    if(hasLogged){
-      this._router.navigate(["/"])
-    }
+    var hasLogged = this.auth.createUserWithEmailAndPassword(this.newUserForm.email, this.newUserForm.password, this.newUserForm.displayName)
+      .catch(() => {
+        this.errorMessage = 'Email already in use!'
+        this.hasError = true
+      }
+      )
+      .finally(() => {
+        if(this.hasError){
+        this.errorMessage = 'Email already in use!'
+        }
+        else{
+          this._router.navigate(['/home'])
+        }
+      })
   }
 }

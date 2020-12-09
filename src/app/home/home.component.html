@@ -1,4 +1,4 @@
-<div class="welcome-text">
+<div *ngIf="!(auth.user$ | async) as user; else welcomeLoggedIn" class="welcome-text">
     <h1>Welcome to Shopaholic!</h1>
     <br>
     <h3>Here you can find the best deals on tech on the market!</h3>
@@ -11,3 +11,9 @@
     <br>
     <h5>Happy Shopping!</h5>
 </div>
+
+<ng-template #welcomeLoggedIn>
+    <h1>Welcome back to Shopaholic!</h1>
+    <h3>Get to the <a routerLink="/shop/browse"><strong>Shop</strong></a> for our hot new deals!</h3>
+
+</ng-template>

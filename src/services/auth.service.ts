@@ -6,6 +6,7 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../entities/user.model'
+import { error } from 'protractor';
 
 
 
@@ -38,33 +39,50 @@ export class AuthService {
     return this.updateUserData(credential.user);
   }
 
+
   async signOut() {
     await this.afAuth.signOut();
     return this.router.navigate(['/home']);
   }
 
-  async createUser(email, password) {
-    this.afAuth.createUserWithEmailAndPassword(email, password)
+  async createUserWithEmailAndPassword(email, password, displayName) {
+    await this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(async (u) => {
-        const credential = await this.afAuth.signInWithEmailAndPassword(email, password);
-        return this.updateUserData(credential.user);
+        const credential = await this.afAuth.signInWithEmailAndPassword(email, password)
+        return await this.updateUserData(credential.user, displayName);
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        throw errorMessage;
       });
   }
 
+  async logInWithEmailAndPassword(email, password){
+    const credential = await this.afAuth.signInWithEmailAndPassword(email, password);
+    return this.updateUserData(credential.user);
+  }
 
-
-  private updateUserData({ uid, email, displayName, photoURL }: User) {
+  private updateUserData({ uid, email, displayName, photoURL }: User, dn?) : any {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc<User>(`users/${uid}`);
-    const data = {
-      uid,
-      email,
-      displayName,
-      photoURL
+    if(!dn || 0 === dn.length){
+      const data = {
+        uid,
+        email,
+        displayName,
+        photoURL
+      }
+      return userRef.set(data, { merge: true })
     }
-    return userRef.set(data, { merge: true })
+    else{
+      const data = {
+        uid,
+        email,
+        displayName : dn,
+        photoURL
+      }
+      return userRef.set(data, { merge: true })
+    }
+
   }
 }

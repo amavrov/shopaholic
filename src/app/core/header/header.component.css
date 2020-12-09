@@ -2,39 +2,44 @@ header {
   background: linear-gradient(rgb(0, 175, 255) 0%, rgba(0, 180, 220, 0.5) 50%, rgb(0, 175, 255) 100%);
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-header ul {
   padding: 0;
   display: flex;
   margin: auto;
 }
-
-header ul span {
-  color: antiquewhite;
-  padding: 0.5em;
+#cart{
+  background-color: red;
 }
 
-.mini-navbar ul {
+header span {
+  color: white;
+  padding: 0.5em;
+  margin: .5em;
+  padding: .25em 1.2em;
+  border: azure solid 1px;
+  border-radius: 4px;
+  background-color: navy;
+
+}
+
+.mini-navbar {
   border: 1px solid #00d4ff;
   border-radius: 0.3em;
   padding-left: 0;
   width: 100%;
 }
 
-header li {
+
+header a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
   background-color: rgb(0, 195, 255);
   list-style: none;
   margin: .5em;
   padding: .25em 1.2em;
   border: azure solid 1px;
   border-radius: 4px;
-}
 
-header a {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
 }
 
 
@@ -52,12 +57,13 @@ nav {
   margin: auto;
 }
 
-.mini-navbar ul {
+.mini-navbar {
   background-color: #6ba1b8;
   border-radius: 5px;
 }
 
-.mini-navbar ul li+li {
+.mini-navbar {
   border-left: 1px solid lightgrey;
   padding-left: .5em;
 }
+
