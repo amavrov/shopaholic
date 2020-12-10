@@ -33,10 +33,21 @@ export class AuthService {
     );
   }
 
+  isAdmin(email) : boolean {
+    var admins = ['i.wrath@gmail.com'];
+    if(admins.includes(email)){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   async googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credential.user);
+    this.router.navigate(['/home']);
+    return await this.updateUserData(credential.user);
   }
 
 

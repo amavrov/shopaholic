@@ -1,30 +1,43 @@
 import { Injectable } from '@angular/core';
 
-import {AngularFirestore} from '@angular/fire/firestore'
-import {Tv} from '../entities/tv.model'
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore'
+import { Observable } from 'rxjs';
+import {Product} from '../entities/tv.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private firestore: AngularFirestore) { }
+  products : Observable<Product[]>;
+  
+  constructor(private firestore: AngularFirestore) {
+  }
+  
+  itemsCollection: AngularFirestoreCollection<Product>;
+  items$: Observable<Product[]>;
 
-  getTvs(){
-    return this.firestore.collection('Tvs').snapshotChanges();
+  loadShopList() {
+    this.itemsCollection = this.firestore.collection('Products');
+    return this.items$ = this.itemsCollection.valueChanges()
   }
 
-  createTv(tv: Tv){
-    return this.firestore.collection('Tvs').add(tv);
+  getProducts(){
+    var result = this.firestore.collection('Products').snapshotChanges();
+    return result;
   }
 
-  deleteTv(tv: Tv){
-    this.firestore.doc('Tvs/' + tv.id).delete();
+  createProduct(product: Product){
+    return this.firestore.collection('Products').add(product);
   }
 
-  updateTv(tv: Tv){
-    var id = tv.id;
-    delete tv.id;
-    this.firestore.doc('Tvs/' + id).update(tv);
+  deleteProduct(product: Product){
+    this.firestore.doc('Products/' + product.id).delete();
+  }
+
+  updateProduct(product: Product){
+    var id = product.id;
+    delete product.id;
+    this.firestore.doc('Products/' + id).update(product);
   }
 }

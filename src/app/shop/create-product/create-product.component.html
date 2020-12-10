@@ -9,22 +9,31 @@
                     <input type="text" class="form-control" placeholder="Product name" name="name" ngModel >
                 </div>
                 <div class="form-group group-elem">
-                  <label for="size">Size: </label><br />
-                    <input type="number" class="form-control"  placeholder="Size in inches" name="size" ngModel >
+                  <label for="price">Price: </label><br />
+                    <input type="number" class="form-control"  placeholder="Price in USD" name="price" ngModel >
                 </div>
                 <div class="form-group group-elem">
                   <label for="brand">Brand: </label><br />
                     <input type="text" class="form-control" id="brand" placeholder="Enter brand name" name="brand" ngModel >
                 </div>
+                <div class="form-group group-elem">
+                  <label for="imgURL">Image URL: </label><br />
+                    <input type="text" class="form-control" id="imgURL" placeholder="e.g. https://google.com/..." name="imgURL" ngModel >
+                </div>
                 <br/>
+                <div class="form-group group-elem">
+                  <label for="description">Description </label><br />
+                    <input type="text" class="form-control" id="description" placeholder="Short description..." name="description" ngModel >
+                </div>
+                <br />
                 <div>
                     <button type="submit" class="btn btn-default" id="Create">Create Product</button>
-                    <button class="button" (click)="auth.signOut()">Sign Out</button>
                 </div>
             </form>
         </div>
     </div>
   </div>
+
 
   <ng-template #login>
     <button class="button" (click)="auth.googleSignIn()">Log in with Google</button>

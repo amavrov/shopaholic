@@ -1,7 +1,7 @@
-import { Tv } from './tv.model';
+import { Product } from './tv.model';
 
 describe('Tv', () => {
   it('should create an instance', () => {
-    expect(new Tv()).toBeTruthy();
+    expect(new Product()).toBeTruthy();
   });
 });

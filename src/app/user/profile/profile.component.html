@@ -1,1 +1,6 @@
-<p>profile works!</p>
+<div class="card"  *ngIf="(auth.user$ | async) as user">
+    <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="{{user.displayName}}" style="width:100%">
+    <h1>{{user.displayName}}</h1>
+    <p class="title">{{user.email}}</p>
+    <p><button>Edit Profile</button></p>
+</div>

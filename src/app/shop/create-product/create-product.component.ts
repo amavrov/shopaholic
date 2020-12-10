@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
-import { Tv } from '../../../entities/tv.model';
+import { Product } from '../../../entities/tv.model';
 import { ProductService } from '../../../services/product.service';
 import { AuthService } from '../../../services/auth.service';
 
@@ -13,7 +13,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class CreateProductComponent implements OnInit {
 
-  newProductForm : Tv;
+  newProductForm : Product;
 
   constructor(private ps: ProductService, public auth: AuthService) { }
 
@@ -26,7 +26,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   save() {
-    this.ps.createTv(this.newProductForm);
+    this.ps.createProduct(this.newProductForm);
   }
 
 }

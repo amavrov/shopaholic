@@ -5,7 +5,7 @@
           <a routerLink="/user/profile">Profile</a>
           <a routerLink="/shop/browse">Shop</a>
           <a id="cart" routerLink="/shop/cart">Your Cart</a>
-          <a style="display: none;" routerLink="/shop/create-product">Create Product</a>
+          <a *ngIf="auth.isAdmin(user.email)" routerLink="/shop/create-product">Create Product</a>
           <a routerLink="/home" (click)="auth.signOut()">Sign Out</a>
     </nav>
   </header>

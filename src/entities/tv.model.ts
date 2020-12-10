@@ -1,6 +1,8 @@
-export class Tv {
+export class Product {
     id: string;
     name: string;
-    size: number;
     brand: string;
+    price : number;
+    description: string;
+    imgURL: string;
 }
