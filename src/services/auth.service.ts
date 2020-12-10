@@ -5,8 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore'
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../entities/user.model'
-import { error } from 'protractor';
+import { User } from '../entities/user.model';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   isAdmin(email) : boolean {
-    var admins = ['i.wrath@gmail.com'];
+    var admins = environment.admins.mails;
     if(admins.includes(email)){
       return true;
     }
@@ -74,7 +74,7 @@ export class AuthService {
     return this.updateUserData(credential.user);
   }
 
-  private updateUserData({ uid, email, displayName, photoURL }: User, dn?) : any {
+  public updateUserData({ uid, email, displayName, photoURL }: User, dn?) : any {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc<User>(`users/${uid}`);
     if(!dn || 0 === dn.length){
       const data = {
@@ -95,5 +95,7 @@ export class AuthService {
       return userRef.set(data, { merge: true })
     }
 
+
+    
   }
 }

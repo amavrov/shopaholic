@@ -1,6 +1,34 @@
-<div class="card"  *ngIf="(auth.user$ | async) as user">
-    <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="{{user.displayName}}" style="width:100%">
-    <h1>{{user.displayName}}</h1>
-    <p class="title">{{user.email}}</p>
-    <p><button>Edit Profile</button></p>
+<div *ngIf="!isInEdit; else edit">
+    <div class="card" *ngIf="(auth.user$ | async) as user">
+        <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="{{user.displayName}}" style="width:100%">
+        <h1>{{user.displayName}}</h1>
+        <p class="title">{{user.email}}</p>
+        <p><button (click)="toggleEditMode()">Edit Profile</button></p>
+    </div>
 </div>
+
+
+
+<ng-template #edit>
+    <div class="card" *ngIf="(auth.user$ | async) as user">
+        <form ngNativeValidate #editUserForm="ngForm" (ngSubmit)="editProfile(editUserForm, user)">
+            <div class="form-group group-elem">
+                <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="{{user.displayName}}" style="width:100%">
+                <p class="new-value-labels">New photo URL:</p>
+                <input type="text" name="photoURL" id="photoURL" placeholder="e.g. https://google.com/..." [ngModel]="user.photoURL">
+                <h3>{{user.displayName}}</h3>
+                <p class="new-value-labels">New display name:</p>
+                <input #displayName="ngModel" type="text" class="form-control" placeholder="e.g. John Doe"
+                    name="displayName" required [ngModel]="user.displayName">
+                <div *ngIf="displayName.touched" class="error">
+                    <p *ngIf="displayName.errors?.required">Display name is a required field!</p>
+                </div>
+                <a class="button" class="cancel" (click)="toggleEditMode()">
+                    <p class="text-button">Cancel</p>
+                </a>
+                <p><button>Submit</button></p>
+            </div>
+
+        </form>
+    </div>
+</ng-template>

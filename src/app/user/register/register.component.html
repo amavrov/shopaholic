@@ -1,7 +1,7 @@
 <div class="form-container" *ngIf="!(auth.user$ | async) as user; else redirect">
   <div>
     <div class="form_bg">
-      <form #regForm='ngForm' (ngSubmit)="RegisterUser(regForm)">
+      <form ngNativeValidate #regForm='ngForm' (ngSubmit)="RegisterUser(regForm)">
         <h2>Register a new Shopaholic account</h2>
         <br />
         <div class="form-group group-elem">

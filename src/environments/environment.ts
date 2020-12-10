@@ -13,6 +13,9 @@ export const environment = {
     messagingSenderId: "552587758510",
     appId: "1:552587758510:web:56c970791bea5872cf163f",
     measurementId: "G-NZ45T062HD"
+  },
+  admins : {
+    mails: ["i.wrath@gmail.com"]
   }
 };
 
