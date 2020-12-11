@@ -3,11 +3,10 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore'
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { User } from '../entities/user.model';
 import { environment } from 'src/environments/environment';
-
 
 
 @Injectable({
@@ -16,11 +15,17 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   user$: Observable<User>;
+  public getLoggedInName = new Subject();
 
   constructor(
     private afs: AngularFirestore,
     private router: Router,
-    private afAuth: AngularFireAuth) {
+    private afAuth: AngularFireAuth,
+    ) {
+    this.getCurrentUser();
+  }
+
+  getCurrentUser(){
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -51,9 +56,10 @@ export class AuthService {
   }
 
 
-  async signOut() {
-    await this.afAuth.signOut();
-    return this.router.navigate(['/home']);
+   async signOut() {
+     await this.afAuth.signOut();
+     this.router.navigate(['/home']);
+     
   }
 
   async createUserWithEmailAndPassword(email, password, displayName) {
@@ -71,7 +77,7 @@ export class AuthService {
 
   async logInWithEmailAndPassword(email, password){
     const credential = await this.afAuth.signInWithEmailAndPassword(email, password);
-    return this.updateUserData(credential.user);
+    return credential;
   }
 
   public updateUserData({ uid, email, displayName, photoURL }: User, dn?) : any {

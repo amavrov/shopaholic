@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile(editUserForm : NgForm, user : User){
+    this.toggleEditMode();
     this.editUserForm = editUserForm.form.value;
     this.save(user);
   }

@@ -6,12 +6,12 @@
           <a routerLink="/shop/browse">Shop</a>
           <a id="cart" routerLink="/shop/cart">Your Cart</a>
           <a *ngIf="auth.isAdmin(user.email)" routerLink="/shop/create-product">Create Product</a>
-          <a routerLink="/home" (click)="auth.signOut()">Sign Out</a>
+          <a routerLink="/home" (click)="logoutHandler()">Sign Out</a>
     </nav>
   </header>
 
   <ng-template #notLoggedHeader>
-    <header>
+    <header> 
     <a routerLink="/user/login">Login</a>
     <a routerLink="/user/register">Register</a>
   </header>

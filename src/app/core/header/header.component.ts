@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 
 @Component({
@@ -6,9 +7,22 @@ import { AuthService } from 'src/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  constructor(public auth: AuthService) { }
+  userName: string;
+
+  constructor(public auth: AuthService, public router: Router)  { }
+
+  logoutHandler(){
+    this.auth.signOut();
+    this.auth.getCurrentUser();
+  }
+
+  ngOnDestroy(): void {
+  }
+  
+  ngOnInit(): void {
+  }
   
 
 }

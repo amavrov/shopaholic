@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule,
     RouterModule
   ],
+  providers: [],
   exports: [HeaderComponent, NotFoundComponent, FooterComponent]
 })
 export class CoreModule { }
