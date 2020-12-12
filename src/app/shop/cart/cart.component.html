@@ -1,1 +1,15 @@
-<p>cart works!</p>
+<div *ngIf="(this.auth.user$ | async) as user" class="container">
+
+    <button *ngIf="!isBtnHidden" class="load-cart-btn" (click)="loadCart(user.uid)">Show product</button>
+    <div *ngIf="isShown">
+        <div *ngIf="(list | async) as list">
+            <div class="card">
+                <img src="{{list.imgURL}}" style="width:100%">
+                <h1>{{list.name}}</h1>
+                <p class="price">${{list.price}}</p>
+                <p>{{list.description}}</p>
+                <p><button class="buy-btn" (click)="buyCart()">Buy now!</button></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from 'src/entities/tv.model';
+import { Cart } from 'src/entities/Cart.model';
+import { Product } from 'src/entities/Product.model';
+import { AuthService } from 'src/services/auth.service';
 import { ProductService } from 'src/services/product.service';
 
 @Component({
@@ -10,13 +12,22 @@ import { ProductService } from 'src/services/product.service';
 })
 export class BrowseComponent implements OnInit {
 
-  constructor(private ps: ProductService) { }
+  constructor(private ps: ProductService, public auth : AuthService) { }
 
   shopList$ : Observable<Product[]>;
+  cart: Cart;
+
+  addToCart(prd : Product, userId : string){
+    var id = userId.toString();
+    this.ps.addProductToCart(prd, id);
+    alert(`Product ${prd.name} successfully added to your cart!`)
+  }
   
   ngOnInit(): void {
     this.shopList$ = this.ps.loadShopList();
-    var a = 1;
+    this.cart = new Cart();
+    this.cart.price = 0;
+    this.cart.products = [];
   }
 
 }

@@ -1,15 +1,16 @@
 <h1>Shop</h1>
 <ul>
-    <li *ngFor="let prd of this.shopList$ | async">
-      <div class="productContainer">
-       <div class="card">
+  <li *ngFor="let prd of this.shopList$ | async">
+    <div class="productContainer">
+      <div class="card">
         <img src="{{prd.imgURL}}" alt="{{prd.name}}" style="width: 100%;">
         <h1>{{prd.name}}</h1>
         <p class="price">${{prd.price}}</p>
         <p>{{prd.description}}</p>
-        <p><button>Add to Cart</button></p>
+        <div *ngIf="(auth.user$ | async) as user;">
+          <p><button (click)="addToCart(prd, user.uid)">Add to Cart</button></p>
+        </div>
       </div>
     </div>
-    </li>
+  </li>
 </ul>
-

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
+import { ProductService } from 'src/services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userName: string;
 
-  constructor(public auth: AuthService, public router: Router)  { }
+  constructor(public auth: AuthService, public router: Router, public productService: ProductService)  { }
 
   logoutHandler(){
     this.auth.signOut();

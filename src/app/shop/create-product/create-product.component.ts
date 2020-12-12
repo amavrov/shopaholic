@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
-import { Product } from '../../../entities/tv.model';
+import { Product } from '../../../entities/Product.model';
 import { ProductService } from '../../../services/product.service';
 import { AuthService } from '../../../services/auth.service';
 
