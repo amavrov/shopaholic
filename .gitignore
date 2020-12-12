@@ -8,10 +8,6 @@
 # Only exists if Bazel was run
 /bazel-out
 
-#environment sercrets
-src/environments/environment.ts
-src/environments/environment.prod.ts
-
 # dependencies
 /node_modules
 
