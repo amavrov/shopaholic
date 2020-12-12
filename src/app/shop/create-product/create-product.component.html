@@ -1,29 +1,29 @@
 <div class="form-container" *ngIf="auth.user$ | async as user; else login">
     <div>
         <div class="form_bg">
-            <form #regForm='ngForm' (ngSubmit)="CreateProduct(regForm)" >
+            <form ngNativeValidate #regForm='ngForm' (ngSubmit)="CreateProduct(regForm)" >
                  <h2>Create a new product</h2>
                 <br/>
                 <div class="form-group group-elem">
                   <label for="name">Name: </label> <br />
-                    <input type="text" class="form-control" placeholder="Product name" name="name" ngModel >
+                    <input type="text" class="form-control" placeholder="Product name" name="name" ngModel required >
                 </div>
                 <div class="form-group group-elem">
                   <label for="price">Price: </label><br />
-                    <input type="number" class="form-control"  placeholder="Price in USD" name="price" ngModel >
+                    <input type="number" class="form-control"  placeholder="Price in USD" name="price" ngModel required >
                 </div>
                 <div class="form-group group-elem">
                   <label for="brand">Brand: </label><br />
-                    <input type="text" class="form-control" id="brand" placeholder="Enter brand name" name="brand" ngModel >
+                    <input type="text" class="form-control" id="brand" placeholder="Enter brand name" name="brand" ngModel required >
                 </div>
                 <div class="form-group group-elem">
                   <label for="imgURL">Image URL: </label><br />
-                    <input type="text" class="form-control" id="imgURL" placeholder="e.g. https://google.com/..." name="imgURL" ngModel >
+                    <input type="text" class="form-control" id="imgURL" placeholder="e.g. https://google.com/..." name="imgURL" ngModel required >
                 </div>
                 <br/>
                 <div class="form-group group-elem">
                   <label for="description">Description </label><br />
-                    <input type="text" class="form-control" id="description" placeholder="Short description..." name="description" ngModel >
+                    <input type="text" class="form-control" id="description" placeholder="Short description..." name="description" ngModel required >
                 </div>
                 <br />
                 <div>
