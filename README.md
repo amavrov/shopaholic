@@ -3,7 +3,7 @@
 ## This is a project used for the project defence of the SoftUni Angular course.
 
 Shopaholic uses Firebase Authentication and Firestore for storage.
-It is deployed here: https://shopaholic-98985.web.app/
+
 
 Some of the functionalitues are:
 - User register (with e-mail and password or with Google account)
